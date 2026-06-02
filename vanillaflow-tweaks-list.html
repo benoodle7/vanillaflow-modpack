@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanillaFlow - Data Pack Tweaks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Fredoka One', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            background: linear-gradient(to bottom, #87ceeb 0%, #e0f6ff 30%, #90ee90 70%, #228b22 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url("https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=1600&h=900&fit=crop");
+            background-size: cover;
+            background-position: center;
+            filter: blur(3px) brightness(0.7) saturate(0.8);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+
+        .stone-border {
+            border: 4px solid #4a4a42;
+            box-shadow: 
+                inset 0 0 0 2px #6b6b63,
+                0 4px 0 #2a2a22,
+                0 8px 8px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #9b9b8f 0%, #7b7b73 100%);
+        }
+
+        .title-block {
+            background: linear-gradient(135deg, #5fb654 0%, #4a8c42 100%);
+            border: 4px solid #2a5a22;
+            box-shadow: 
+                inset 0 0 0 2px #7fbc6f,
+                0 6px 0 #1a3a12,
+                0 12px 12px rgba(0, 0, 0, 0.4);
+            color: #fffacd;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #d4a574 0%, #b8905c 100%);
+            border: 3px solid #8b6f47;
+            box-shadow: 
+                inset 0 0 0 1px #e8c8a0,
+                0 4px 0 #5a4730;
+            color: #2a1810;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .tweak-item {
+            background: linear-gradient(135deg, #c0c0c0 0%, #a8a8a0 100%);
+            border: 2px solid #808078;
+            box-shadow: inset 0 0 0 1px #e0e0d8;
+            transition: transform 0.1s;
+            cursor: pointer;
+        }
+
+        .tweak-item:hover {
+            transform: scale(1.02);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .title-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            word-spacing: 0.1em;
+        }
+
+        .title-section p {
+            font-size: 1.5rem;
+            color: #c8ff8e;
+        }
+
+        .category-section {
+            margin-bottom: 2rem;
+        }
+
+        .category-header {
+            padding: 1rem;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.25rem;
+            word-spacing: 0.1em;
+        }
+
+        .category-content {
+            padding: 1.5rem;
+            border-radius: 0 0 8px 8px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .tweak-item {
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+
+        .tweak-item .name {
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tweak-item .desc {
+            font-size: 0.85rem;
+            color: #555;
+            font-family: Arial, sans-serif;
+            letter-spacing: normal;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0.25rem 0;
+        }
+
+        .accent-green {
+            color: #5fb654;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .title-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .title-section p {
+                font-size: 1.1rem;
+            }
+
+            .category-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Title -->
+        <div class="title-section title-block">
+            <h1>VANILLAFLOW</h1>
+            <p>Data Pack Tweaks</p>
+        </div>
+
+        <!-- Survival & QoL -->
+        <div class="category-section">
+            <div class="category-header">⚔️ SURVIVAL & QUALITY OF LIFE</div>
+            <div class="category-content stone-border">
+                <div class="tweak-item"><div class="name">Fast Leaf Decay</div><div class="desc">Leaves fall quickly</div></div>
+                <div class="tweak-item"><div class="name">Multiplayer Sleep</div><div class="desc">Only % need to sleep</div></div>
+                <div class="tweak-item"><div class="name">Unlock All Recipes</div><div class="desc">Recipes unlocked</div></div>
+                <div class="tweak-item"><div class="name">Armored Elytra</div><div class="desc">Combine with chestplate</div></div>
+                <div class="tweak-item"><div class="name">Double Shulker Shells</div><div class="desc">Always 2 shells</div></div>
+                <div class="tweak-item"><div class="name">Dragon Drops</div><div class="desc">Elytra on dragon kill</div></div>
+                <div class="tweak-item"><div class="name">Durability Ping</div><div class="desc">Tool break warning</div></div>
+                <div class="tweak-item"><div class="name">Cauldron Concrete</div><div class="desc">Make concrete easier</div></div>
+                <div class="tweak-item"><div class="name">XP Bottling</div><div class="desc">Bottle & save XP</div></div>
+            </div>
+        </div>
+
+        <!-- Building & Redstone -->
+        <div class="category-section">
+            <div class="category-header">🏗️ BUILDING & REDSTONE</div>
+            <div class="category-content stone-border">
+                <div class="tweak-item"><div class="name">Armor Statues</div><div class="desc">Customizable stands</div></div>
+                <div class="tweak-item"><div class="name">Redstone Rotation Wrench</div><div class="desc">Rotate redstone</div></div>
+                <div class="tweak-item"><div class="name">Terracotta Rotation Wrench</div><div class="desc">Rotate clay</div></div>
+                <div class="tweak-item"><div class="name">Villager Workstations</div><div class="desc">See which works where</div></div>
+            </div>
+        </div>
+
+        <!-- World & Nature -->
+        <div class="category-section">
+            <div class="category-header">🌍 WORLD & NATURE</div>
+            <div class="category-content stone-border">
+                <div class="tweak-item"><div class="name">Anti Enderman Grief</div><div class="desc">No block pickup</div></div>
+                <div class="tweak-item"><div class="name">Anti Ghast Grief</div><div class="desc">No block destruction</div></div>
+                <div class="tweak-item"><div class="name">Custom Nether Portals</div><div class="desc">Any portal shape</div></div>
+            </div>
+        </div>
+
+        <!-- Information & HUD -->
+        <div class="category-section">
+            <div class="category-header">📊 INFORMATION & HUD</div>
+            <div class="category-content stone-border">
+                <div class="tweak-item"><div class="name">Coordinates HUD</div><div class="desc">On-screen position</div></div>
+                <div class="tweak-item"><div class="name">Track Statistics</div><div class="desc">Game progression</div></div>
+                <div class="tweak-item"><div class="name">Track Raw Statistics</div><div class="desc">Detailed stat tracking</div></div>
+                <div class="tweak-item"><div class="name">Villager Deaths</div><div class="desc">Chat notifications</div></div>
+                <div class="tweak-item"><div class="name">Nether Portal Coords</div><div class="desc">Overworld ↔ Nether</div></div>
+            </div>
+        </div>
+
+        <!-- Mob Enhancements -->
+        <div class="category-section">
+            <div class="category-header">👹 MOB ENHANCEMENTS</div>
+            <div class="category-content stone-border">
+                <div class="tweak-item"><div class="name">More Mob Heads</div><div class="desc">All mobs drop heads</div></div>
+                <div class="tweak-item"><div class="name">Silence Mobs</div><div class="desc">Mute named mobs</div></div>
+            </div>
+        </div>
+
+        <!-- Fun Additions -->
+        <div class="category-section">
+            <div class="category-header">✨ FUN ADDITIONS</div>
+            <div class="category-content stone-border">
+                <div class="tweak-item"><div class="name">Wandering Trades</div><div class="desc">Unique merchant items</div></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer stone-border">
+            <p>All tweaks from <span class="accent-green">Vanilla Tweaks</span></p>
+            <p>Minecraft 26.1.2 • Fabric</p>
+        </div>
+    </div>
+</body>
+</html>
